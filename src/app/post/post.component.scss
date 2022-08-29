@@ -1,0 +1,26 @@
+.card {
+    border: 1px solid #ccc;
+    padding: 8px 20px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    position: relative;
+
+
+    .close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 23px;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        &:hover{
+            color: red;
+            cursor: pointer;
+        }
+    }
+}   

@@ -1,0 +1,45 @@
+<header>
+  <div class="container">
+    <h1
+      class="title"
+      appStyle
+      [dStyles]="{ color: 'red', border: '1px solid orange', size: '5rem' }"
+    >
+      {{ p | async }}
+    </h1>
+    <div class="clocks">
+      {{ date | async | date: "HH:mm:ss" }}
+    </div>
+  </div>
+</header>
+
+<main>
+  <app-post-form
+    (onAddPost)="updatePost($event)"
+    (onInputFilter)="filterPosts($event)"
+    (onSelect)="changeType($event)"
+  ></app-post-form>
+
+  <h2 style="text-align: center">Posts</h2>
+  <div #info>
+    <app-post
+      *ngFor="let p of posts | filter: search:selectType"
+      [post]="p"
+      (onRemove)="removePost($event)"
+    >
+      <small style="color: red" *ngIf="p.text.length < 10"
+        >Required post length of min. 10 symbols</small
+      >
+    </app-post>
+  </div>
+</main>
+
+<footer>
+  <p>LocalCounterService in AppComponent: {{ LocalCounterService.counter }}</p>
+  <button class="btn" (click)="LocalCounterService.increase()">+</button>
+  <button class="btn" (click)="LocalCounterService.decrease()">-</button>
+  <hr />
+  <p>AppCounterService in AppComponent: {{ AppCounterService.counter }}</p>
+  <button class="btn" (click)="AppCounterService.increase()">+</button>
+  <button class="btn" (click)="AppCounterService.decrease()">-</button>
+</footer>

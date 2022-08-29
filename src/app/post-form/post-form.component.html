@@ -1,0 +1,45 @@
+<div>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Title..."
+    [(ngModel)]="title"
+    #inputForm
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Post..."
+    [(ngModel)]="text"
+  />
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="filter..."
+    #myInp
+    (input)="inputChange(myInp)"
+  />
+
+  <select
+    #mySelect
+    (change)="selectInputType(mySelect)"
+    style="margin-right: '10px'"
+  >
+    <option value="" selected>choose filter</option>
+    <option *ngFor="let item of list" [value]="item.type">
+      {{ item.name }}
+    </option>
+  </select>
+
+  <button class="btn" (click)="addPost()">add post</button>
+  <button class="btn" (click)="addFocus()">focus</button>
+
+  <p>LocalCounterService in PostComponent: {{ LocalCounterService.counter }}</p>
+  <button class="btn" (click)="LocalCounterService.increase()">+</button>
+  <button class="btn" (click)="LocalCounterService.decrease()">-</button>
+  <hr />
+  <p>AppCounterService in PostComponent: {{ AppCounterService.counter }}</p>
+  <button class="btn" (click)="AppCounterService.increase()">+</button>
+  <button class="btn" (click)="AppCounterService.decrease()">-</button>
+</div>
